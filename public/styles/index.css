@@ -4,6 +4,8 @@ html, body{
 body{
     background-color: #f9f9f9;
 }
+
+/* chat-login start */
 .chat-login{
     position: relative;
     top: 50%;
@@ -27,3 +29,20 @@ body{
     padding: 10px 16px;
     border: 1px solid rgb(204, 204, 204);
 }
+/* chat-login end */
+
+/* side-bar start */
+.side-bar{
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 30px;
+    background-color: rgb(33, 40, 46);
+}
+/* side-bar end */
+
+/* chat-room start */
+.chat-room{
+    height: 100%;
+}
+/* chat-room end */
