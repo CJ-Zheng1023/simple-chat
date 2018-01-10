@@ -1,0 +1,27 @@
+{
+  "name": "simple-chat",
+  "version": "1.0.0",
+  "description": "a chat app based on socket.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CJ-Zheng1023/simple-chat.git"
+  },
+  "keywords": [
+    "socket.io",
+    "node.js"
+  ],
+  "author": "AfterWin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CJ-Zheng1023/simple-chat/issues"
+  },
+  "homepage": "https://github.com/CJ-Zheng1023/simple-chat#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
