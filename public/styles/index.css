@@ -1,0 +1,29 @@
+html, body{
+    height: 100%;
+}
+body{
+    background-color: #f9f9f9;
+}
+.chat-login{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.chat-login .container{
+    max-width: 700px;
+}
+.chat-login h1{
+    color: #337ab7;
+}
+.chat-login .panel{
+    border-color: rgb(238, 238, 238);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .05);
+}
+.chat-login .form-action{
+    text-align: center;
+}
+.chat-login .form-group input{
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid rgb(204, 204, 204);
+}
