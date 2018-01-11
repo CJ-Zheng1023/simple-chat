@@ -18,9 +18,6 @@ io.on('connection', function(socket){
         socket.user = user;
         socket.emit('queryUser', users);
     })
-    socket.on('removeUser', function(msg){
-        console.log(msg)
-    })
     socket.on('disconnect', function(){
         users = users.filter(function(item){
             return item != socket.user;

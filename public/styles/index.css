@@ -178,7 +178,7 @@ body{
 .message-item .own .message-content{
     background-color: #aee65d;
 }
-.chat-room .chat-dialog .send-box{
+.chat-room .chat-dialog .send-form{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -187,16 +187,16 @@ body{
     padding: 10px 70px 10px 15px;
     border-top: 1px solid #ccc;
 }
-.send-box>input{
+.send-form>input{
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px 10px;
 }
-.send-box>input:focus, .send-box>input:active{
+.send-form>input:focus, .send-form>input:active{
     outline: none;
 }
-.send-box>button{
+.send-form>button{
     position: absolute;
     right: 5px;
     top: 9px;
