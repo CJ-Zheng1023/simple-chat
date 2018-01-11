@@ -16,12 +16,19 @@ io.on('connection', function(socket){
     socket.on('addUser', function(user){
         users.push(user);
         socket.user = user;
+        socket.broadcast.emit('queryUser', users);
         socket.emit('queryUser', users);
+        socket.emit('cacheCurrentUser', user);
     })
     socket.on('disconnect', function(){
         users = users.filter(function(item){
             return item != socket.user;
         })
+        socket.broadcast.emit('queryUser', users);
+    })
+    socket.on('addMessage', function(message){
+        socket.broadcast.emit('queryMessage', message);
+        socket.emit('queryMessage', message);
     })
 })
 http.listen(3000, function(){
