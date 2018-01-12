@@ -1,7 +1,12 @@
 $(function(){
-    $('.scrollable').slimScroll({
-        height: '100%'
-    });
+    $('#loginName').focus();
+    function setScroll(){
+        $('.scrollable').slimScroll({
+            height: '100%'
+        });
+    }
+    setScroll();
+    $(window).on('resize', setScroll);
     $('.side-bar-toggle').on('click', function(){
         $('.side-bar').toggleClass('open');
     })
@@ -55,5 +60,28 @@ $(function(){
         $belong.append($user).append($content);
         $item.append($belong);
         $messageList.append($item);
+        console.log(123)
+        var scrollTo = $('#messageList').height() - $('.message-box .scrollable').height();
+        $('.message-box .scrollable').slimScroll({
+            height: '100%',
+            scrollTo: scrollTo
+        })
+    })
+    socket.on('notify', function(data){
+        if(!$room.data('currentUser')){
+            return;
+        }
+        if(data.action == 'join'){
+            $.bootstrapGrowl(data.user + '  加入了聊天室~~~', {
+                type:'info',
+                delay: 3000
+            })
+        }else{
+            $.bootstrapGrowl(data.user + '  离开了聊天室 T.T', {
+                type:'warning',
+                delay: 3000,
+                offset: {from: "bottom", amount: 80}
+            })
+        }
     })
 })

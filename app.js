@@ -19,12 +19,20 @@ io.on('connection', function(socket){
         socket.broadcast.emit('queryUser', users);
         socket.emit('queryUser', users);
         socket.emit('cacheCurrentUser', user);
+        socket.broadcast.emit('notify', {
+            user: user,
+            action: 'join'
+        });
     })
     socket.on('disconnect', function(){
         users = users.filter(function(item){
             return item != socket.user;
         })
         socket.broadcast.emit('queryUser', users);
+        socket.broadcast.emit('notify', {
+            user: socket.user,
+            action: 'leave'
+        });
     })
     socket.on('addMessage', function(message){
         socket.broadcast.emit('queryMessage', message);
