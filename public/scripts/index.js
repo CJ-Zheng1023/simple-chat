@@ -1,4 +1,6 @@
 $(function(){
+    pushHistory();
+
     $('#loginName').focus();
     function setScroll(){
         $('.scrollable').slimScroll({
@@ -83,4 +85,33 @@ $(function(){
             })
         }
     })
+    window.addEventListener("popstate", function(e) {
+        //alert("我监听到了浏览器的返回按钮事件啦");//根据自己的需求实现自己的功能
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            leaveAtBATPlatform();
+            WeixinJSBridge.call('closeWindow'); //微信
+        } else if(ua.indexOf("alipay")!=-1){
+            leaveAtBATPlatform();
+            AlipayJSBridge.call('closeWebview'); //支付宝
+        }else if(ua.indexOf("baidu")!=-1){
+            leaveAtBATPlatform();
+            BLightApp.closeWindow(); //百度
+        }else{
+            window.close(); //普通浏览器
+        }
+    }, false);
+
+    function leaveAtBATPlatform(){
+        socket.emit('leaveAtBATPlatform');
+    }
+
+
+    function pushHistory() {
+        var state = {
+            title: "title",
+            url: "#"
+        };
+        window.history.pushState(state, "title", "#");
+    }
 })
