@@ -48,7 +48,41 @@
                     </ul>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="music">
-                    功能未开放！
+                    <table class="table table-music">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div>歌手</div>
+                                </th>
+                                <th>
+                                    <div>歌曲</div>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div>尹钟信</div></td>
+                                <td><div>每当那时候</div></td>
+                                <td>
+                                    <div style="width: 14px;">
+                                        <audio src="../public/music/尹钟信-每当那时候.mp3"></audio>
+                                        <i class="music-controls glyphicon glyphicon-play"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div>BTS</div></td>
+                                <td><div>DNA</div></td>
+                                <td>
+                                    <div style="width: 14px;">
+                                        <audio src="../public/music/BTS-DNA.mp3"></audio>
+                                        <i class="music-controls glyphicon glyphicon-play"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -133,5 +167,26 @@
 <script src="../public/components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../public/components/socket.io-client/dist/socket.io.js"></script>
 <script src="../public/scripts/index.js"></script>
+<script>
+    $(function(){
+        $('.music-controls').on('click', function(){
+            var me = $(this);
+            if(me.hasClass('glyphicon-play')){
+                $('.table-music>tbody>tr').removeClass('playing');
+                me.closest('tr').addClass('playing');
+                $('.music-controls').removeClass('glyphicon-pause').addClass('glyphicon-play');
+                me.removeClass('glyphicon-play').addClass('glyphicon-pause');
+                me.closest('tr').siblings().find('audio').each(function(i, dom){
+                    dom.pause();
+                    dom.currentTime = 0;
+                })
+                me.siblings('audio')[0].play();
+            }else{
+                me.removeClass('glyphicon-pause').addClass('glyphicon-play');
+                me.siblings('audio')[0].pause();
+            }
+        })
+    })
+</script>
 </body>
 </html>
